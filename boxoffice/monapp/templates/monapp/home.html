@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/styles.css" %}">
+<title>Accueil</title>
+{% endblock head %}
+{% block content %}
+{% include "includes/header.html" %}
+
+<main>
+<div class="top">
+	<div class="columns">
+		<div class="column is-full featured_wrapper p-0">
+			<img src={% static "img/dune.jpeg" %} class="featured">
+			<div class="title_wrapper">
+				<span class="has-text-white">En Tendance</span>
+				<h1 class="title is-1 has-text-white">Dune Part II</h1>
+				<button class="button is-medium" onclick="window.location.href='https://www.allocine.fr/film/fichefilm_gen_cfilm=278742.html';">En savoir plus</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="subcontainer">
+		<div class="column is-full">
+			<p class="has-text-white">Films Populaires</p>
+		</div>
+        <div class="grid">
+            <div>
+                <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=39187.html">
+                    <img src={% static "img/lotr.jpg" %}>
+                </a>
+            </div>
+            <div>
+                <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=114782.html">
+                    <img src={% static "img/interstellar.jpg" %}>
+                </a>
+            </div>
+            <div>
+                <a href="https://www.allocine.fr/film/fichefilm_gen_cfilm=132874.html">
+                    <img src={% static "img/batman.jpg" %}>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+{% include "includes/footer.html" %}
+{% endblock %}

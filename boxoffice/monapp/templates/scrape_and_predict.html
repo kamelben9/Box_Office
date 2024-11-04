@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+{% comment %} <link rel="stylesheet" href="{% static "css/styles.css" %}"> {% endcomment %}
+<title>Prediction</title>
+{% endblock head %}
+{% block content %}
+<div class='container_model'>
+    <h2>Top Ten Films</h2>
+    <form method="GET">
+        <label for="date_filter">Choose a Wednesday:</label>
+        <input type="date" id="date_filter" name="date_filter">
+        <button type="submit">Predict</button>
+    </form>
+    <table class="film-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Titre du Film</th>
+                <th>Genre du Film</th>
+                <th>Durée du Film</th>
+                <th>Distributeur</th>
+                <th>Nationalités</th>
+                <th>Langue d'Origine</th>
+                <th>Type de Film</th>
+                <th>Année de Production</th>
+                <th>Number of entries in France</th>
+                <th>Number of entries in my cinema</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prediction in predictions %}
+            <tr>
+                <td><img src="{{ prediction.film.image }}" alt="{{ prediction.film.titre }} Image" width="100" height="150"></td>
+                <td>{{ prediction.film.titre }}</td>
+                <td>{{ prediction.film.genre|join:", " }}</td>
+                <td>{{ prediction.film.duree }}</td>
+                <td>{{ prediction.film.distributeur }}</td>
+                <td>{{ prediction.film.nationalites|join:", " }}</td>
+                <td>{{ prediction.film.langue_origine|join:", " }}</td>
+                <td>{{ prediction.film.type_film|join:", " }}</td>
+                <td>{{ prediction.film.annee_production|join:", " }}</td>
+                <td>{{ prediction.prediction }}</td>
+                <td>{{ prediction.box_office_divided }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

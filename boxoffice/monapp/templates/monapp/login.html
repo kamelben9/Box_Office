@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<title>Connexion</title>
+
+{% endblock head %}
+
+{% block content %}
+<a class="nav-link" style = "color : white" href={% url "homepage" %}>ACCUEIL</a>
+<div class="login">
+    <div class="form">
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            {% if message  %}
+            <div style="color: red; padding: 10px;" >{{ message }}</div>
+            {% endif %}
+            {{form.as_p}}
+            <button>Se connecter</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

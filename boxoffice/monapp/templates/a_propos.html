@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/styles.css" %}">
+<title>A Propos</title>
+{% endblock head %}
+{% block content %}
+{% include "includes/header.html" %}
+
+<main >
+<h1>A Propos</h1>
+<div style = "color: white">
+    <header>
+        <h1>Modèle de Prédiction - XGBoost</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Contexte du Projet</h2>
+            <p>Le projet utilise un modèle de prédiction basé sur l'algorithme XGBoost pour estimer les recettes au box-office des films à venir. L'objectif principal est de fournir une estimation des recettes en première semaine pour les nouveaux films, en utilisant différentes caractéristiques influentes.</p>
+        </section>
+        <section>
+            <h2>Fonctionnement du Modèle</h2>
+            <h3>Caractéristiques Utilisées</h3>
+            <ul>
+                <li>Genre du Film</li>
+                <li>Durée du Film</li>
+                <li>Distributeur</li>
+                <li>Nationalité du Film</li>
+                <li>Saison</li>
+                <li>Acteurs connus</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Performance du Modèle</h2>
+            <p>Le modèle XGBoost parvient à prédire avec succès environ 53% de la variation des recettes réelles au box-office des films à venir. Cette performance a été mesurée à l'aide de la métrique R2, propre aux modèles de régression linéaire.</p>
+        </section>
+    </main>
+
+
+</div>
+
+
+
+{% include "includes/footer.html" %}
+{% endblock %} 

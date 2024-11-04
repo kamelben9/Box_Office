@@ -1,0 +1,67 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-auto">
+          <li class="nav-item">
+            <a class="nav-link" href={% url "homepage" %}>ACCUEIL</a>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href={% url "predict_boxoffice" %}>PREDICTION</a>
+          </li>
+          {% endif %} 
+          <li class="nav-item">
+            <a class="nav-link" href={% url "a_propos" %}>A PROPOS</a>
+          </li>
+        </ul>
+
+
+          
+          {% comment %} {% if user.is_authenticated %}
+          <span class="id_log"> Logged as : {{user.get_username}}</span>
+          <li class='id1'>
+          <a class="btn btn-sm btn-outline-secondary" href='/accounts/logout'>log out</a>
+        </li>
+          {% else %}
+          <span class='id_log'>You are not logged</span>
+          <li class='id1'>
+            <a href="signup" class="btn btn-sm btn-outline-secondary">Sign up</a>
+            <a href="accounts/login/" class="btn btn-sm btn-outline-secondary">Login</a>
+        </li>
+        
+          {% endif %} {% endcomment %}
+
+
+        </ul>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-auto" >
+          <li class="nav-item">
+            <a class="login" href={% url "login" %}>Se connecter</a>
+          </li>
+        </ul>
+
+          
+          {% comment %} {% if user.is_authenticated %}
+          <span class="id_log"> Logged as : {{user.get_username}}</span>
+          <li class='id1'>
+          <a class="btn btn-sm btn-outline-secondary" href='/accounts/logout'>log out</a>
+        </li>
+          {% else %}
+          <span class='id_log'>You are not logged</span>
+          <li class='id1'>
+            <a href="signup" class="btn btn-sm btn-outline-secondary">Sign up</a>
+            <a href="accounts/login/" class="btn btn-sm btn-outline-secondary">Login</a>
+        </li>
+        
+          {% endif %} {% endcomment %}
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>

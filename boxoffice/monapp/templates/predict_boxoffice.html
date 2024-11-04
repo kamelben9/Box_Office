@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head%} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<title>Prediction</title>
+
+{% endblock head %}
+{% block content %}
+<a class="nav-link" style = "color : white" href={% url "homepage" %}>ACCUEIL</a>
+<div class="login">
+    <div class="form">
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label" for="nationality">Nationalité du Film</label>
+                <div class="control">
+                    <input class="input" type="text" id="nationality" name="nationality" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="duration">Durée (en minutes)</label>
+                <div class="control">
+                    <input class="input" type="number" id="duration" name="duration" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="season">Saison</label>
+                <div class="control">
+                    <div class="select">
+                        <select id="season" name="season" required>
+                            <option value="Hiver">Hiver</option>
+                            <option value="Printemps">Printemps</option>
+                            <option value="Été">Été</option>
+                            <option value="Automne">Automne</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="genre">Genre du Film</label>
+                <div class="control">
+                    <div class="select">
+                        <select id="genre" name="genre" required>
+                            <option value="Drame">Drame</option>
+                            <option value="Comédie">Comédie</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Action">Action</option>
+                            <option value="Comédie dramatique">Comédie dramatique</option>
+                            <option value="Aventure">Aventure</option>
+                            <option value="Animation">Animation</option>
+                            <option value="Fantastique">Fantastique</option>
+                            <option value="Policier">Policier</option>
+                            <option value="Famille">Famille</option>
+                            <option value="Épouvante-horreur">Épouvante-horreur</option>
+                            <option value="Science fiction">Science fiction</option>
+                            <option value="Biopic">Biopic</option>
+                            <option value="Historique">Historique</option>
+                            <option value="Musical">Musical</option>
+                            <option value="Guerre">Guerre</option>
+                            <option value="Comédie musicale">Comédie musicale</option>
+                            <option value="Espionnage">Espionnage</option>
+                            <option value="Western">Western</option>
+                            <option value="Arts Martiaux">Arts Martiaux</option>
+                            <option value="Judiciaire">Judiciaire</option>
+                            <option value="Érotique">Érotique</option>
+                            <option value="Bollywood">Bollywood</option>
+                            <option value="Péplum">Péplum</option>
+                            <option value="Expérimental">Expérimental</option>
+                            <option value="Sport event">Sport event</option>
+                            <option value="Divers">Divers</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="num_known_actors">Nombre d'acteurs connus</label>
+                <div class="control">
+                    <input class="input" type="number" id="num_known_actors" name="num_known_actors" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="distributor">Distributeur connu</label>
+                <div class="control">
+                    <input class="input" type="text" id="distributor" name="distributor" required>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Estimer le Box Office</button>
+                </div>
+            </div>
+            <div class="container_model">
+                <h2>Estimation du Box Office</h2>
+                <form method="POST">
+                    
+                </form>
+                {% if prediction %}
+                <div class="box">
+                    <p>{{ prediction }} entrées en première semaine</p>
+                </div>
+                {% endif %}
+            </div> 
+        </form>
+    </div>
+</div>
+
+{% endblock %}
