@@ -9,8 +9,11 @@
           </li>
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href={% url "predict_boxoffice" %}>PREDICTION</a>
-          </li>
+            <a class="nav-link" href="{% url 'predict_boxoffice' %}">PREDICTION</a>
+        </li>
+        <li class="nav-item">
+            <span class="id_log">Connecté: {{ user.get_username }}</span>
+        </li>
           {% endif %} 
           <li class="nav-item">
             <a class="nav-link" href={% url "a_propos" %}>A PROPOS</a>
@@ -43,6 +46,11 @@
           <li class="nav-item">
             <a class="login" href={% url "login" %}>Se connecter</a>
           </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="login" href={% url "login" %}>Se deconnecter</a>
+          </li>
+          {% endif %}
         </ul>
 
           

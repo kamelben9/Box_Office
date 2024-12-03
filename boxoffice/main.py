@@ -30,7 +30,7 @@ genres = [
 
 # Liste des colonnes attendues par le modèle
 expected_columns = [
-    'nationality', 'duration_minutes', 'season', 'nombre_acteurs_connus', 'distributor_important'
+    'nationality', 'duration_minutes', 'season', 'nombre_acteurs_connus', 'distributor_important', 'budget'
 ] + genres
 
 class PredictionRequest(BaseModel):
@@ -40,6 +40,7 @@ class PredictionRequest(BaseModel):
     genre: str
     nombre_acteurs_connus: int
     distributor_important: bool
+    budget: float
 
 @app.post("/predict")
 def predict(data: PredictionRequest):
@@ -57,7 +58,8 @@ def predict(data: PredictionRequest):
             "duration_minutes": data.duration_minutes,
             "season": data.season,
             "nombre_acteurs_connus": data.nombre_acteurs_connus,
-            "distributor_important": data.distributor_important
+            "distributor_important": data.distributor_important,
+            "budget" : data.budget
         }
         
         # Combiner les deux dictionnaires

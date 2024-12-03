@@ -58,7 +58,8 @@ def test_predict_boxoffice_post(client):
         'season': 'summer',
         'genre': 'comedy',
         'num_known_actors': '3',
-        'distributor': 'on'
+        'distributor': 'on',
+        'budget' : '30000000.00'
     }
     response = client.post(reverse('predict_boxoffice'), data)
     assert response.status_code == 200

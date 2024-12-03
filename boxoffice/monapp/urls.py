@@ -17,5 +17,6 @@ urlpatterns = [
     path('predict_boxoffice/', views.predict_boxoffice, name='predict_boxoffice'),
     # path('signup/', views.SignupPage.as_view(), name='signup'),
     # path('home_user/',views.home_user,name='home_user')
+    path('',views.logout_user,name='logout')
 ]
 

@@ -54,8 +54,9 @@ def a_propos(request):
     return render(request, 'a_propos.html')
 
 def logout_user(request):
+    logger.info(f"{datetime.datetime.now()}l'utilisateur s'est déconnecté")
     logout(request)
-    return redirect('login')
+    return redirect('homepage')
 
 # def scrape_and_predict(request):
 #     # Exécuter le spider Scrapy en tant que sous-processus
@@ -103,6 +104,7 @@ def predict_boxoffice(request):
         genre = form.data['genre']
         nombre_acteurs_connus = form.data['num_known_actors']
         distributor_important = form.data['distributor'] == 'on'
+        budget = form.data['budget']
 
         # Préparer les données pour l'API
         data = {
@@ -111,11 +113,12 @@ def predict_boxoffice(request):
             'season': season,
             'genre': genre,
             'nombre_acteurs_connus': nombre_acteurs_connus,
-            'distributor_important': distributor_important
+            'distributor_important': distributor_important,
+            'budget' : budget
         }
 
         # Sélection des clés d'intérêt pour la prédiction
-        liste_cle = ['nationality', 'duration_minutes', 'season', 'genre', 'nombre_acteurs_connus', 'distributor_important']
+        liste_cle = ['nationality', 'duration_minutes', 'season', 'genre', 'nombre_acteurs_connus', 'distributor_important', 'budget']
         data_cleaned = {cle: data[cle] for cle in liste_cle}
         print(data)
 

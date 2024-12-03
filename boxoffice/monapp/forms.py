@@ -86,3 +86,9 @@ class PredictForm(forms.Form):
         max_length=100,
         widget=forms.TextInput(attrs={'class': 'input', 'id': 'distributor', 'required': True})
     )
+
+    budget = forms.FloatField(
+        label = "Budget du film",
+        widget=forms.NumberInput(attrs={'class': 'input', 'id': 'budget', 'required': True})
+
+    )
